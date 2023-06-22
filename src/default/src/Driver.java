@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.text.*;
 
 public class Driver {
     public static void main(String[] args) {
@@ -7,6 +8,7 @@ public class Driver {
         double buyingPrice = scan.nextDouble();
         int day = 1;
         double closingPrice = 0.1;
+        DecimalFormat df = new DecimalFormat("0.00");
 
         while (true) {
             System.out.println("Enter the closing price for day "
@@ -16,15 +18,17 @@ public class Driver {
             double earnings = closingPrice - buyingPrice;
             if (earnings > 0){
                 System.out.println("After day " + day + " you have earned "
-                        + earnings + " per share.");
+                        + df.format(earnings) + " per share.");
             }
             else if (earnings < 0){
                 System.out.println("After day " + day + " you have lost "
-                        + (-earnings) + " per share.");
+                        + df.format(-earnings) + " per share.");
             }
             else {
                 System.out.println("After day " + day + " you have broken even.");
             }
+            day++;
         }
+        scan.close();
     }
 }
