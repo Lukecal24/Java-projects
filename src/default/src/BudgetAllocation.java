@@ -17,6 +17,7 @@ public class BudgetAllocation {
             double value = scan.nextDouble();
             proportion.add(value);
             sum += proportion.get(i);
+            i++;
         } while (sum <= 100);
         scan.close();
         if (sum > 100){
@@ -25,6 +26,10 @@ public class BudgetAllocation {
                 cumulativeSum += proportion.get(j);
             }
             proportion.set(proportion.size() - 1, 100.0 - cumulativeSum);
+        }
+        for (double value : proportion){
+            double expense = total * value / 100;
+            System.out.println("Your " + value + "% equals $" + expense);
         }
     }
 }
